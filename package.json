@@ -1,15 +1,20 @@
 {
   "name": "hamrah-email-apply",
   "version": "1.0.0",
-  "description": "همراه ایمیل اپلای - مدیریت درخواست‌های تحصیلات تکمیلی بین‌المللی",
-  "author": "Shayan Taherkhani <admin@shayantaherkhani.ir>",
+  "description": "🎓 AI-Powered Graduate Application Management System | First Persian app for managing international graduate school applications with artificial intelligence | مدیریت هوشمند درخواست‌های تحصیلات تکمیلی با هوش مصنوعی",
+  "author": {
+    "name": "Shayan Taherkhani",
+    "email": "admin@shayantaherkhani.ir",
+    "url": "https://shayantaherkhani.ir"
+  },
   "homepage": "https://github.com/Shayanthn/hamrah-email-apply",
   "repository": {
     "type": "git",
     "url": "https://github.com/Shayanthn/hamrah-email-apply.git"
   },
   "bugs": {
-    "url": "https://github.com/Shayanthn/hamrah-email-apply/issues"
+    "url": "https://github.com/Shayanthn/hamrah-email-apply/issues",
+    "email": "admin@shayantaherkhani.ir"
   },
   "main": "public/electron.js",
   "scripts": {
@@ -29,36 +34,45 @@
     "dist": "npm run build && electron-builder --publish=never"
   },
   "keywords": [
-    "اپلای",
-    "درخواست تحصیلی", 
-    "تحصیلات تکمیلی",
-    "ایمیل اپلای",
-    "مدیریت اپلای",
-    "دانشگاه خارج",
     "graduate-application",
-    "apply-management",
-    "international-study",
+    "phd-application",
+    "masters-application",
+    "application-management",
     "email-tracking",
     "professor-database",
+    "ai-powered",
+    "artificial-intelligence",
+    "student-helper",
+    "academic-tools",
     "persian-app",
     "farsi-software",
+    "iranian-students",
+    "international-study",
+    "sop-writer",
+    "email-generator",
+    "deadline-tracker",
+    "application-tracker",
     "electron-app",
     "desktop-application",
-    "student-tools",
-    "education-management",
-    "academic-applications",
-    "iran-students",
+    "cross-platform",
+    "react-typescript",
+    "tailwindcss",
     "free-software",
     "open-source",
-    "cross-platform"
+    "mit-license",
+    "education-technology",
+    "edtech",
+    "اپلای",
+    "تحصیلات-تکمیلی",
+    "دکتری",
+    "کارشناسی-ارشد",
+    "دانشگاه-خارج"
   ],
   "license": "MIT",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "electron": "^26.2.1",
-    "sqlite3": "^5.1.6",
     "react-router-dom": "^6.15.0",
     "lucide-react": "^0.263.1",
     "date-fns": "^2.30.0",
@@ -67,6 +81,7 @@
     "@tailwindcss/forms": "^0.5.6"
   },
   "devDependencies": {
+    "electron": "^26.2.1",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@types/node": "^20.5.7",
