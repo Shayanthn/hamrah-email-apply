@@ -1,0 +1,225 @@
+{
+  "name": "hamrah-email-apply",
+  "version": "1.0.0",
+  "description": "همراه ایمیل اپلای - مدیریت درخواست‌های تحصیلات تکمیلی بین‌المللی",
+  "author": "Shayan Taherkhani <admin@shayantaherkhani.ir>",
+  "homepage": "https://github.com/Shayanthn/hamrah-email-apply",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shayanthn/hamrah-email-apply.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Shayanthn/hamrah-email-apply/issues"
+  },
+  "main": "public/electron.js",
+  "scripts": {
+    "electron": "electron .",
+    "electron-dev": "ELECTRON_IS_DEV=true electron .",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-pack": "electron-builder",
+    "preelectron-pack": "npm run build",
+    "dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && npm run electron-dev\"",
+    "build-win": "npm run build && electron-builder --win",
+    "build-win-portable": "npm run build && electron-builder --win portable",
+    "build-mac": "npm run build && electron-builder --mac",
+    "build-linux": "npm run build && electron-builder --linux",
+    "dist": "npm run build && electron-builder --publish=never"
+  },
+  "keywords": [
+    "اپلای",
+    "درخواست تحصیلی", 
+    "تحصیلات تکمیلی",
+    "ایمیل اپلای",
+    "مدیریت اپلای",
+    "دانشگاه خارج",
+    "graduate-application",
+    "apply-management",
+    "international-study",
+    "email-tracking",
+    "professor-database",
+    "persian-app",
+    "farsi-software",
+    "electron-app",
+    "desktop-application",
+    "student-tools",
+    "education-management",
+    "academic-applications",
+    "iran-students",
+    "free-software",
+    "open-source",
+    "cross-platform"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "electron": "^26.2.1",
+    "sqlite3": "^5.1.6",
+    "react-router-dom": "^6.15.0",
+    "lucide-react": "^0.263.1",
+    "date-fns": "^2.30.0",
+    "react-hook-form": "^7.45.4",
+    "recharts": "^2.8.0",
+    "@tailwindcss/forms": "^0.5.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@types/node": "^20.5.7",
+    "typescript": "^4.9.5",
+    "tailwindcss": "^3.3.3",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.28",
+    "electron-builder": "^24.6.4",
+    "concurrently": "^8.2.1",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.shayantaherkhani.hamrah.emailapply",
+    "productName": "همراه ایمیل اپلای",
+    "copyright": "Copyright © 2025 Shayan Taherkhani. All rights reserved.",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "build/**/*",
+      "public/electron.js",
+      "public/preload.js",
+      "node_modules/**/*",
+      "!node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!node_modules/*.d.ts",
+      "!node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/",
+        "to": "assets/",
+        "filter": ["**/*"]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.education",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "assets/icon.icns"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "requestedExecutionLevel": "asInvoker",
+      "signAndEditExecutable": false
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "Education"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "menuCategory": true,
+      "shortcutName": "همراه ایمیل اپلای",
+      "uninstallDisplayName": "همراه ایمیل اپلای",
+      "artifactName": "${productName}-${version}-Setup.${ext}",
+      "deleteAppDataOnUninstall": false,
+      "displayLanguageSelector": false,
+      "installerLanguages": ["en_US"],
+      "language": "1033",
+      "multiLanguageInstaller": false,
+      "packElevateHelper": true,
+      "perMachine": false,
+      "runAfterFinish": true,
+      "include": "assets/installer.nsh"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-Portable.${ext}"
+    },
+    "dmg": {
+      "artifactName": "${productName}-${version}.${ext}",
+      "background": "assets/dmg-background.png",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    },
+    "appImage": {
+      "artifactName": "${productName}-${version}.${ext}"
+    },
+    "deb": {
+      "artifactName": "${productName}-${version}.${ext}",
+      "synopsis": "همراه ایمیل اپلای - مدیریت درخواست‌های تحصیلات تکمیلی",
+      "description": "برنامه‌ای برای مدیریت حرفه‌ای درخواست‌های تحصیلات تکمیلی دانشجویان ایرانی",
+      "category": "Education",
+      "maintainer": "Shayan Taherkhani <admin@shayantaherkhani.ir>"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "Shayanthn",
+      "repo": "hamrah-email-apply"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
