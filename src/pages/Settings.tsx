@@ -138,6 +138,41 @@ const Settings: React.FC = () => {
         </div>
       </div>
 
+      {/* App Settings */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white font-persian">
+            تنظیمات برنامه
+          </h3>
+        </div>
+        
+        <div className="p-6 space-y-4">
+          <div className="flex items-center gap-3">
+            <SettingsIcon className="w-5 h-5 text-gray-500" />
+            <div className="flex-1">
+              <div className="font-medium text-gray-900 dark:text-white font-persian">
+                نمایش مجدد راهنمای شروع
+              </div>
+              <div className="text-sm text-gray-500 dark:text-gray-400 font-persian">
+                راهنمای خوش‌آمدگویی را دوباره نمایش بده
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                localStorage.removeItem('hasSeenWelcome');
+                setFeedback({ type: 'success', message: 'راهنما در دفعه بعدی نمایش داده خواهد شد.' });
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
+              }}
+              className="px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white transition-colors font-persian"
+            >
+              نمایش راهنما
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Data Management */}
       <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
         <div className="p-6 border-b border-gray-200 dark:border-gray-700">

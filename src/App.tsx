@@ -34,7 +34,8 @@ function App() {
 
   useEffect(() => {
     const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
-    if (!hasSeenWelcome) {
+    // Always show welcome modal unless user explicitly chose "don't show again"
+    if (hasSeenWelcome !== 'true') {
       setShowWelcome(true);
     }
   }, []);

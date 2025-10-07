@@ -22,6 +22,7 @@ interface WelcomeModalProps {
 
 const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [dontShowAgain, setDontShowAgain] = useState(false);
 
   const steps = [
     {
@@ -151,7 +152,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
               <span className="text-2xl text-white font-bold">🧑‍💻</span>
             </div>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white font-persian mb-2">
-              سلام! من توسعه‌دهنده این برنامه هستم 👋
+              سلام! من شایان توسعه‌دهنده این برنامه هستم 👋
             </h3>
             <p className="text-gray-600 dark:text-gray-300 font-persian leading-relaxed">
               این پروژه با ❤️ و امید به کمک به همه دانشجویان ایرانی ساخته شده است.
@@ -161,7 +162,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
           
           <div className="space-y-3">
             <a
-              href="https://github.com/username/applyhelper"
+              href="https://github.com/Shayanthn/hamrah-email-apply"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center space-x-3 rtl:space-x-reverse p-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-colors"
@@ -174,9 +175,9 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
               onClick={() => {
                 // Open GitHub issues page
                 if ((window as any).electron?.openExternal) {
-                  (window as any).electron.openExternal('https://github.com/username/applyhelper/issues');
+                  (window as any).electron.openExternal('https://github.com/Shayanthn/hamrah-email-apply/issues');
                 } else {
-                  window.open('https://github.com/username/applyhelper/issues', '_blank');
+                  window.open('https://github.com/Shayanthn/hamrah-email-apply/issues', '_blank');
                 }
               }}
               className="flex items-center justify-center space-x-3 rtl:space-x-reverse p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors w-full"
@@ -209,7 +210,9 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
   };
 
   const handleClose = () => {
-    localStorage.setItem('hasSeenWelcome', 'true');
+    if (dontShowAgain) {
+      localStorage.setItem('hasSeenWelcome', 'true');
+    }
     onClose();
   };
 
@@ -291,13 +294,27 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
           </div>
 
           {currentStep === steps.length - 1 ? (
-            <button
-              onClick={handleClose}
-              className="flex items-center space-x-2 rtl:space-x-reverse px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-persian"
-            >
-              <Heart className="w-4 h-4" />
-              <span>شروع کنیم! 🚀</span>
-            </button>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                <input
+                  id="dontShowAgain"
+                  type="checkbox"
+                  checked={dontShowAgain}
+                  onChange={(e) => setDontShowAgain(e.target.checked)}
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label htmlFor="dontShowAgain" className="text-sm text-gray-600 dark:text-gray-300 font-persian">
+                  دیگه این راهنما رو نمایش نده
+                </label>
+              </div>
+              <button
+                onClick={handleClose}
+                className="flex items-center space-x-2 rtl:space-x-reverse px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-persian w-full justify-center"
+              >
+                <Heart className="w-4 h-4" />
+                <span>شروع کنیم! 🚀</span>
+              </button>
+            </div>
           ) : (
             <button
               onClick={nextStep}
